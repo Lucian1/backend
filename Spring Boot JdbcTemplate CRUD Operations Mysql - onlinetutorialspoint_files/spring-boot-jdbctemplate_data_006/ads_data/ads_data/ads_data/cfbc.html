@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"></head><body>
+<script type="text/javascript">
+try {
+    var eventUrl = 'https://tps10260.doubleverify.com/event.gif?impid=9116dbc37f794095b6a47ac38746faf3&rtcid=-1&ifbc=0';
+    var isadid = 0;
+    var isrtc = 0;
+    var isrtexist, lsid, isfbls;
+    var hasStorage = (function(){
+		try {
+			var testStr = 'dv-lsTest';
+			localStorage.setItem(testStr, testStr);
+			localStorage.removeItem(testStr);
+			return true;
+		} catch(e) {
+			return false;
+		}
+	})();
+
+    if (navigator.cookieEnabled)
+        eventUrl += '&isce=1';           
+    
+    if (hasStorage) {
+		try{
+			lsid = (localStorage.rt || '-1');
+			isfbls = localStorage.rt ? '1': '0';
+			eventUrl += '&islse=1&rtlsid=' + lsid + '&ifbls=' + isfbls;
+		}catch(e){}
+    }
+
+    if (isrtc || isfbls == '1' || isadid) {
+        var image = document.createElement('img');
+        image.src = eventUrl;
+        image.width = 0;
+        image.height = 0;
+        image.style.display = 'none';
+        document.body.insertBefore(image, document.body.firstChild);
+    }
+}catch (e) {
+    try {
+        var errUrl = window.location.protocol + '//tps30.doubleverify.com/visit.jpg?ctx=818052&cmp=1619415&dvtagver=6.1.src&jsver=0&dvp_isCfbcRes=1&dvp_jsErrMsg=' + encodeURIComponent(e);
+        (new Image()).src = errUrl;
+    }catch (ex)
+    {}
+}
+</script>
+
+
+</body></html>
